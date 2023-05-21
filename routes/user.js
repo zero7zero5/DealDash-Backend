@@ -88,7 +88,7 @@ routes.get("/:id/orders", async (req, res) => {
 });
 routes.put("/:id/orders", async (req, res) => {
   const user = await userModel.findOne({ _id: req.params.id });
-  user.orderList = req.body();
+  user.orderList = req.body.items;
   const result = await user.save();
   res.send(result);
 });
