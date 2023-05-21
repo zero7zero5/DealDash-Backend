@@ -7,7 +7,9 @@ const products = require("./routes/product");
 const auth = require("./routes/auth");
 app.use(express.json());
 mongoose
-  .connect("mongodb://localhost/ecommerce")
+  .connect(
+    "mongodb+srv://saber_basha:1234567890@cluster0.aga7wy0.mongodb.net/ecommerce?retryWrites=true&w=majority"
+  )
   .then(() => console.log("Database connected"))
   .catch((err) => console.log(err));
 
