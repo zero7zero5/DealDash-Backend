@@ -80,6 +80,12 @@ routes.delete("/:id/cart/:pid", async (req, res) => {
   res.send(result.cart);
 });
 
+routes.get("/:id/orders", async (req, res) => {
+  const id = req.params.id;
+  const user = await userModel.findById(id);
+  if (!user) return res.status(400).send("No such items found");
+  res.send(user.orderList);
+});
 routes.post("/:id/orders", async (req, res) => {
   const user = await userModel.findOne({ _id: req.params.id });
   user.orderList.push(req.body.cart);
