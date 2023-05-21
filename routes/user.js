@@ -86,9 +86,9 @@ routes.get("/:id/orders", async (req, res) => {
   if (!user) return res.status(400).send("No such items found");
   res.send(user.orderList);
 });
-routes.post("/:id/orders", async (req, res) => {
+routes.put("/:id/orders", async (req, res) => {
   const user = await userModel.findOne({ _id: req.params.id });
-  user.orderList.push(req.body.cart);
+  user.orderList = req.body();
   const result = await user.save();
   res.send(result);
 });
